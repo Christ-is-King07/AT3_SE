@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import logo from './assets/logo.png'; // Adjust the path as necessary
 
 export default function Header() {
@@ -9,9 +10,9 @@ export default function Header() {
         </div>
         <h1 className="text-xl font-bold">Vic Photography</h1>
         <nav className="mr-5 space-x-4">
-            <route element="/" className="hover:underline">Home</route>
-            <a element="/about" className="hover:underline">About Me</a>
-            <a element="/enquire" className="hover:underline">Enquire</a>
+            <Link to="/home" className="hover:underline">Home</Link>
+            <Link to="/about" className="hover:underline">About Me</Link>
+            <Link to="/enquire" className="hover:underline">Enquire</Link>
         </nav>
     </header>
     );

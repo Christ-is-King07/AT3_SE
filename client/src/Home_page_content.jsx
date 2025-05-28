@@ -6,7 +6,7 @@ export default function HomePage() {
     return (
         <div className="flex flex-col items-center justify-center bg-gray-100">
                 <img src={wedding2} className="w-400 h-165"></img>
-            <div class="column" className="flex flex-wrap justify-center gap-4 p-4">    
+            <div className="flex flex-wrap justify-center gap-4 p-4">    
 
                 <img src={wedding}></img> 
                 <img src={wedding}></img>
