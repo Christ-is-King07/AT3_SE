@@ -15,6 +15,8 @@ app.use(
     })
 );
 
+app.use("/api/enquire", require("./routes/enquire"));
+
 app.use(express.json());
 
 app.use((err, req, res, next) => {
