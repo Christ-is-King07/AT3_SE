@@ -40,46 +40,55 @@ export default function Enquire() {
     };
 
     // Render the form
-    return (
-        <div className="flex flex-col items-center justify-center bg-gray-100 min-h-screen">
-            <div className="p-8 max-w-2xl w-full">
-                <h1 className="text-3xl font-bold mb-4">Enquire</h1>
-                <p className="mb-6">Please fill out the form below to get in touch with us.</p>
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        className="w-full p-2 border border-gray-300 rounded"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Your Email"
-                        className="w-full p-2 border border-gray-300 rounded"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                    <textarea
-                        name="message"
-                        placeholder="Your Message"
-                        className="w-full p-2 border border-gray-300 rounded h-32"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                    ></textarea>
-                    <button
-                        type="submit"
-                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    >
-                        Send
-                    </button>
-                </form>
-            </div>
+return (
+    <div className="flex flex-col items-center justify-start bg-gray-100 min-h-screen pt-12">
+        <div className="flex flex-col md:flex-row max-w-6xl w-full px-8 gap-20">
+        {/* Left side: Heading and description */}
+        <div className="md:w-1/2">
+            <h1 className="text-3xl font-bold mb-4">Enquire</h1>
+            <p className="text-gray-700">
+            Please fill out the form below to get in touch with us.
+            </p>
         </div>
+    
+        {/* Right side: Form */}
+        <div className="md:w-1/2">
+            <form className="space-y-4" onSubmit={handleSubmit}>
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                className="w-full p-2 border border-gray-300 rounded"
+                value={formData.name}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                className="w-full p-2 border border-gray-300 rounded"
+                value={formData.email}
+                onChange={handleChange}
+                required
+            />
+            <textarea
+                name="message"
+                placeholder="Your Message"
+                className="w-full p-2 border border-gray-300 rounded h-32"
+                value={formData.message}
+                onChange={handleChange}
+                required
+            ></textarea>
+            <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+                Send
+            </button>
+            </form>
+        </div>
+        </div>
+    </div>
     );
 }
