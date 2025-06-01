@@ -8,7 +8,6 @@ export default function Enquire() {
         phone_number: "",
         event_type: "",
         event_date: "",
-        other_event_type: "",
         proposed_payment: "",
         how_you_heard: "",
         additional_info: ""
@@ -32,7 +31,7 @@ export default function Enquire() {
             const data = await response.json();
             console.log("Enquiry submitted successfully:", data);
             // Reset form after successful submission
-            setFormData({ first_name: "", last_name:"", email: "", phone_number:"", event_type: "", event_date:"", other_event_type: "", proposed_payment: "", how_you_heard: "", additional_info: "" });
+            setFormData({ first_name: "", last_name:"", email: "", phone_number:"", event_type: "", event_date:"", proposed_payment: "", how_you_heard: "", additional_info: "" });
         } catch (error) {
             console.error("Error submitting enquiry:", error);
         }
@@ -98,18 +97,15 @@ return (
                 onChange={handleChange}
                 required
             />
-            <select
+            <input
+                type="text"
+                placeholder="Event Type*"
                 name="event_type"
                 className="w-60 h-10 mr-6 p-2 border border-gray-300 rounded"
                 value={formData.event_type}
                 onChange={handleChange}
                 required
-            >
-                <option value="" disabled>Select Event Type*</option>
-                <option value="wedding">Wedding</option>
-                <option value="baptism">Baptism</option>
-                <option value="other">Other</option>
-            </select>
+            />
             <input
                 type="date"
                 name="event_date"
@@ -117,14 +113,6 @@ return (
                 value={formData.event_date}
                 onChange={handleChange}
                 required
-            />
-            <input
-                type="text"
-                name="other_event_type"
-                placeholder="Other Event Type"
-                className="w-full p-2 border border-gray-300 rounded"
-                value={formData.other_event_type}
-                onChange={handleChange}
             />
             <input
                 type="number"

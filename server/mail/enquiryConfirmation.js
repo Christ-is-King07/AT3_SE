@@ -34,7 +34,6 @@ module.exports =  (first_name, last_name, event_type, event_date, other_event_ty
         <p>We have received your message and will get back to you shortly.</p>
         <p><strong>Event Type:</strong> ${event_type}</p>
         <p><strong>Event Date:</strong> ${event_date}</p>
-        <p><strong>Other Event Type:</strong> ${other_event_type}</p>
         <p><strong>Proposed Payment:</strong> ${proposed_payment}</p>
         <p><strong>Your Message:</strong></p>
         <p>${additional_info}</p>

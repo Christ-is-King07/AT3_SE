@@ -38,7 +38,6 @@ module.exports = (first_name, last_name, email, phone_number, event_type, event_
     <p><strong>Phone Number:</strong> ${phone_number}</p>
     <p><strong>Event Type:</strong> ${event_type}</p>
     <p><strong>Event Date:</strong> ${event_date}</p>
-    <p><strong>Other Event Type:</strong> ${other_event_type}</p>
     <p><strong>Proposed Payment:</strong> ${proposed_payment}</p>
     <p><strong>How You Heard About Us:</strong> ${how_you_heard}</p>
     <p><strong>Additional Information:</strong></p>

@@ -13,7 +13,7 @@ router.use(express.json());
 
 router.post('/', async (req, res) => {
     console.log("Received body:", req.body);
-    const { first_name, last_name, email, phone_number, event_type, event_date, other_event_type, proposed_payment, how_you_heard, additional_info } = req.body;
+    const { first_name, last_name, email, phone_number, event_type, event_date, proposed_payment, how_you_heard, additional_info } = req.body;
 
     if (isNaN(Number(proposed_payment))) {
         return res.status(400).json({ error: 'Proposed payment must be a valid number' });
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
     try {
         const enquiry = await prisma.enquiry.create({
-            data: { first_name, last_name, email, phone_number, event_type, event_date: new Date(event_date), other_event_type, proposed_payment, how_you_heard, additional_info },
+            data: { first_name, last_name, email, phone_number, event_type, event_date: new Date(event_date), proposed_payment, how_you_heard, additional_info },
         });
 
         // Email to Admin (you)
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
             },
             subject: `New Enquiry from ${first_name} ${last_name}`,
             replyTo: email,
-            html: adminEmailTemplate(first_name, last_name, email, phone_number, event_type, event_date, other_event_type, proposed_payment, how_you_heard, additional_info ),
+            html: adminEmailTemplate(first_name, last_name, email, phone_number, event_type, event_date, proposed_payment, how_you_heard, additional_info ),
         };
 
         // Confirmation Email to Enquirer
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
                 name: 'Vic Photography'
             },
             subject: 'We received your enquiry!',
-            html: enquiryConfirmationTemplate(first_name, last_name, event_type, event_date, other_event_type, proposed_payment, additional_info),
+            html: enquiryConfirmationTemplate(first_name, last_name, event_type, event_date, proposed_payment, additional_info),
         };
 
 

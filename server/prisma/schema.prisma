@@ -31,7 +31,6 @@ model Enquiry {
   phone_number     String
   event_type  String
   event_date  DateTime
-  other_event_type String?
   proposed_payment String
   how_you_heard     String
   additional_info   String
