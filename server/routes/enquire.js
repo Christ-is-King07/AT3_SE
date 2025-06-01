@@ -12,15 +12,20 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 router.use(express.json());
 
 router.post('/', async (req, res) => {
-    const { name, email, message } = req.body;
+    console.log("Received body:", req.body);
+    const { first_name, last_name, email, phone_number, event_type, event_date, other_event_type, proposed_payment, how_you_heard, additional_info } = req.body;
 
-    if (!name || !email || !message) {
-        return res.status(400).json({ error: 'All fields are required' });
-    }
+    if (isNaN(Number(proposed_payment))) {
+        return res.status(400).json({ error: 'Proposed payment must be a valid number' });
+      }
+      if ([first_name, last_name, email, phone_number, event_type, event_date, proposed_payment, how_you_heard, additional_info].some(field => typeof field === "undefined" || field === "")) {
+        return res.status(400).json({ error: 'All required fields must be provided' });
+      }
+    
 
     try {
         const enquiry = await prisma.enquiry.create({
-            data: { name, email, message },
+            data: { first_name, last_name, email, phone_number, event_type, event_date: new Date(event_date), other_event_type, proposed_payment, how_you_heard, additional_info },
         });
 
         // Email to Admin (you)
@@ -30,9 +35,9 @@ router.post('/', async (req, res) => {
                 email: process.env.SENDGRID_FROM_EMAIL,
                 name: 'Vic Photography'
             },
-            subject: `New Enquiry from ${name}`,
+            subject: `New Enquiry from ${first_name} ${last_name}`,
             replyTo: email,
-            html: adminEmailTemplate(name, email, message),
+            html: adminEmailTemplate(first_name, last_name, email, phone_number, event_type, event_date, other_event_type, proposed_payment, how_you_heard, additional_info ),
         };
 
         // Confirmation Email to Enquirer
@@ -43,7 +48,7 @@ router.post('/', async (req, res) => {
                 name: 'Vic Photography'
             },
             subject: 'We received your enquiry!',
-            html: enquiryConfirmationTemplate(name, message),
+            html: enquiryConfirmationTemplate(first_name, last_name, event_type, event_date, other_event_type, proposed_payment, additional_info),
         };
 
 

@@ -1,4 +1,4 @@
-module.exports =  (name, message) => `
+module.exports =  (first_name, last_name, event_type, event_date, other_event_type, proposed_payment, additional_info) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +30,14 @@ module.exports =  (name, message) => `
     </head>
     <body>
     <div class="container">
-        <h1>Thank You for Your Enquiry, ${name}!</h1>
+        <h1>Thank You for Your Enquiry, ${first_name} ${last_name}!</h1>
         <p>We have received your message and will get back to you shortly.</p>
+        <p><strong>Event Type:</strong> ${event_type}</p>
+        <p><strong>Event Date:</strong> ${event_date}</p>
+        <p><strong>Other Event Type:</strong> ${other_event_type}</p>
+        <p><strong>Proposed Payment:</strong> ${proposed_payment}</p>
         <p><strong>Your Message:</strong></p>
-        <p>${message}</p>
+        <p>${additional_info}</p>
         <p>If you have any further questions, feel free to reply to this email.</p>
         <p>Best regards,<br>Vic Photography</p>
     </div>

@@ -2,15 +2,23 @@ import React from "react";
 
 export default function Enquire() {
     const [formData, setFormData] = React.useState({
-        name: "",
+        first_name: "",
+        last_name: "",
         email: "",
-        message: ""
+        phone_number: "",
+        event_type: "",
+        event_date: "",
+        other_event_type: "",
+        proposed_payment: "",
+        how_you_heard: "",
+        additional_info: ""
     });
 
     // Handle form submission, send api data to localhost:3500/api/enquire
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            console.log("Sending enquiry data:", formData);
             const response = await fetch("http://localhost:3500/api/enquire", {
                 method: "POST",
                 headers: {
@@ -24,7 +32,7 @@ export default function Enquire() {
             const data = await response.json();
             console.log("Enquiry submitted successfully:", data);
             // Reset form after successful submission
-            setFormData({ name: "", email: "", message: "" });
+            setFormData({ first_name: "", last_name:"", email: "", phone_number:"", event_type: "", event_date:"", other_event_type: "", proposed_payment: "", how_you_heard: "", additional_info: "" });
         } catch (error) {
             console.error("Error submitting enquiry:", error);
         }
@@ -56,27 +64,93 @@ return (
             <form className="space-y-4" onSubmit={handleSubmit}>
             <input
                 type="text"
-                name="name"
-                placeholder="Your Name"
-                className="w-full p-2 border border-gray-300 rounded"
-                value={formData.name}
+                name="first_name"
+                placeholder="First Name*"
+                className="w-60 mr-6 p-2 border border-gray-300 rounded"
+                value={formData.first_name}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="text"
+                name="last_name"
+                placeholder="Last Name*"
+                className="w-60 p-2 border border-gray-300 rounded"
+                value={formData.last_name}
                 onChange={handleChange}
                 required
             />
             <input
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder="Email*"
                 className="w-full p-2 border border-gray-300 rounded"
                 value={formData.email}
                 onChange={handleChange}
                 required
             />
+            <input
+                type="tel"
+                name="phone_number"
+                placeholder="Phone Number*"
+                className="w-full p-2 border border-gray-300 rounded"
+                value={formData.phone_number}
+                onChange={handleChange}
+                required
+            />
+            <select
+                name="event_type"
+                className="w-60 h-10 mr-6 p-2 border border-gray-300 rounded"
+                value={formData.event_type}
+                onChange={handleChange}
+                required
+            >
+                <option value="" disabled>Select Event Type*</option>
+                <option value="wedding">Wedding</option>
+                <option value="baptism">Baptism</option>
+                <option value="other">Other</option>
+            </select>
+            <input
+                type="date"
+                name="event_date"
+                className="w-60 h-10 border border-gray-300 rounded"
+                value={formData.event_date}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="text"
+                name="other_event_type"
+                placeholder="Other Event Type"
+                className="w-full p-2 border border-gray-300 rounded"
+                value={formData.other_event_type}
+                onChange={handleChange}
+            />
+            <input
+                type="number"
+                name="proposed_payment"
+                placeholder="Proposed Payment Amount*"
+                className="w-full p-2 border border-gray-300 rounded"
+                value={formData.proposed_payment}
+                onChange={handleChange}
+                required
+                pattern="^\d+(\.\d{1,2})?$"
+                title="Please enter a valid number, optionally with up to 2 decimal places."
+            />            
+            <input
+            type="text"
+            name="how_you_heard"
+            placeholder="How did you hear about us?*"
+            className="w-full p-2 border border-gray-300 rounded"
+            value={formData.how_you_heard}
+            onChange={handleChange}
+            required
+            />
             <textarea
-                name="message"
-                placeholder="Your Message"
+                name="additional_info"
+                placeholder="Additional information*"
                 className="w-full p-2 border border-gray-300 rounded h-32"
-                value={formData.message}
+                value={formData.additional_info}
                 onChange={handleChange}
                 required
             ></textarea>

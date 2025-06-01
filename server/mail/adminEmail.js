@@ -1,4 +1,4 @@
-module.exports = (name, email, message) => `
+module.exports = (first_name, last_name, email, phone_number, event_type, event_date, other_event_type, proposed_payment, how_you_heard, additional_info) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +30,19 @@ module.exports = (name, email, message) => `
 </head>
 <body>
 <div class="container">
-    <h1>New Enquiry from ${name}</h1>
+    <h1>New Enquiry from ${first_name} ${last_name}</h1>
     <p>You have received a new enquiry from your website.</p>
-    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>First Name:</strong> ${first_name}</p>
+    <p><strong>Last Name:</strong> ${last_name}</p>
     <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Message:</strong></p>
-    <p>${message}</p>
+    <p><strong>Phone Number:</strong> ${phone_number}</p>
+    <p><strong>Event Type:</strong> ${event_type}</p>
+    <p><strong>Event Date:</strong> ${event_date}</p>
+    <p><strong>Other Event Type:</strong> ${other_event_type}</p>
+    <p><strong>Proposed Payment:</strong> ${proposed_payment}</p>
+    <p><strong>How You Heard About Us:</strong> ${how_you_heard}</p>
+    <p><strong>Additional Information:</strong></p>
+    <p>${additional_info}</p>
     <p>Please respond to the enquirer at their email address.</p>
     <p>Best regards,<br>Vic Photography</p>
 </div>

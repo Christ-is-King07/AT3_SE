@@ -25,9 +25,16 @@ model User {
 
 model Enquiry {
   id        String   @id @default(uuid())
-  name      String
+  first_name      String
+  last_name       String
   email     String
-  message   String
+  phone_number     String
+  event_type  String
+  event_date  DateTime
+  other_event_type String?
+  proposed_payment String
+  how_you_heard     String
+  additional_info   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
