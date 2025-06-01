@@ -1,4 +1,4 @@
-module.exports = (first_name, last_name, email, phone_number, event_type, event_date, other_event_type, proposed_payment, how_you_heard, additional_info) => `
+module.exports = (first_name, last_name, email, phone_number, event_type, event_date, proposed_payment, how_you_heard, additional_info) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
