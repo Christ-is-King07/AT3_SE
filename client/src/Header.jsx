@@ -6,13 +6,13 @@ export default function Header() {
     return(
         <header className="flex justify-between items-center p-4 text-black border-b border-black-600 bg-white">    
         <div className="flex items-center">
-            <img src={logo} alt="Logo" className="h-20 w-30 mr-2 ml-6" />
+            <img src={logo} alt="Logo" className="h-20 w-35 mr-2 ml-6" />
         </div>
-        <h1 className="text-xl font-bold">Vic Photography</h1>
-        <nav className="mr-5 space-x-4">
+        <h1 style={{ fontFamily: "'Good Vibes', cursive" }} className="text-4xl font-bold">Vic Photography</h1>
+        <nav style={{ fontFamily: "'Good Vibes', cursive" }} className="mr-5 space-x-4 text-2xl">
             <Link to="/home" className="hover:underline">Home</Link>
-            <Link to="/about" className="hover:underline">About Me</Link>
-            <Link to="/enquire" className="hover:underline">Enquire</Link>
+            <Link to="/about" className="hover:underline ml-5">About Me</Link>
+            <Link to="/enquire" className="hover:underline ml-5">Enquire</Link>
         </nav>
     </header>
     );

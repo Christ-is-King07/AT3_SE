@@ -15,3 +15,23 @@
     margin-top: 8px;
     vertical-align: middle;
   }
+
+@font-face {
+  font-family: 'Darlington';
+  src: url('../public/fonts/DarlingtonDemo-z8xjG.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.font-myfont {
+  font-family: 'Darlington', sans-serif;
+}
+
+@font-face {
+  font-family: 'Good Vibes';
+  src: url('/fonts/GoodVibes-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.font-myfont2 {
+  font-family: 'Good Vibes', sans-serif;
+}

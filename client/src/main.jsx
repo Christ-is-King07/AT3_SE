@@ -13,6 +13,7 @@ const App = () => (
   <BrowserRouter>
     <Header />
     <Routes>
+      <Route path="/" element={<Home_page_content />} />
       <Route path="/home" element={<Home_page_content />} />
       <Route path="/enquire" element={<Enquire />} />
       <Route path="/about" element={<About_me />} />
