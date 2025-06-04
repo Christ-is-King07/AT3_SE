@@ -27,11 +27,11 @@
 }
 
 @font-face {
-  font-family: 'Good Vibes';
-  src: url('/fonts/GoodVibes-Regular.ttf') format('truetype');
+  font-family: 'Snell Roundhand';
+  src: url('/fonts/SnellRoundhand.ttc') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 .font-myfont2 {
-  font-family: 'Good Vibes', sans-serif;
+  font-family: 'Snell Roundhand', sans-serif;
 }
