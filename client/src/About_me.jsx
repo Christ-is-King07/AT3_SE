@@ -1,9 +1,11 @@
 import React from "react";
+import weddinginchurch from "./assets/weddinginchurch.jpg";
 
 export default function About_me() {
     return(
-        <div className="flex flex-col items-center justify-center bg-gray-100 min-h-screen">
-            <div className="p-8 max-w-2xl w-full">
+        <div className="flex flex-col items-center justify-center bg-gray-100 min-h-screen"  style={{ fontFamily: "'Georgia', cursive" }}>
+            <img src={weddinginchurch} alt="WeddingInChurch" className="w-1200"/>
+            <div className="p-8 max-w-2xl w-full text-center">
                 <h1 className="text-3xl font-bold mb-4">About Me</h1>
                 <p className="mb-6">Hello! I'm a passionate photographer with a love for capturing life's most beautiful moments. My journey in photography began at a young age, and it has since evolved into a lifelong passion.</p>
                 <p className="mb-6">I specialize in various types of photography, including weddings, portraits, and landscapes. My goal is to create stunning images that tell a story and evoke emotions.</p>

@@ -1,4 +1,5 @@
 import React from "react";
+import Georgia from "../public/fonts/Georgia.ttf"; // Adjust the path as necessary
 
 export default function Enquire() {
     const [formData, setFormData] = React.useState({
@@ -51,13 +52,20 @@ return (
     <div className="flex flex-col items-center justify-start bg-gray-100 min-h-screen pt-12">
         <div className="flex flex-col md:flex-row max-w-6xl w-full px-8 gap-20">
         {/* Left side: Heading and description */}
-        <div className="md:w-1/2">
+        <div className="md:w-1/2" style={{ fontFamily: "'Georgia', cursive" }}>
             <h1 className="text-3xl font-bold mb-4">Enquire</h1>
             <p className="text-gray-700">
-            Please fill out the form below to get in touch with us.
+                <b>Ready to make a booking or have a question?</b>
+                <br />
+                We’re excited to help bring your vision to life! Whether you’re planning a special event, a personal session, or need more details about our packages, just fill out the form below. Please include as much information as possible—like dates, locations, and the type of service you’re after—so we can get back to you with the right details. We aim to respond promptly and make the booking process smooth and stress-free. Let’s make something amazing together!
+                <br />
+                <br />  
+                <b>Phone Number:</b> 0480 237 035
+                <br />
+                <b>Email:</b> <a href="mailto:">vic-designer@hotmail.com</a>
             </p>
         </div>
-    
+
         {/* Right side: Form */}
         <div className="md:w-1/2">
             <form className="space-y-4" onSubmit={handleSubmit}>

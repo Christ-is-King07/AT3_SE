@@ -35,3 +35,13 @@
 .font-myfont2 {
   font-family: 'Snell Roundhand', sans-serif;
 }
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../public/fonts/Georgia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.font-myfont {
+  font-family: 'Georgia', sans-serif;
+}

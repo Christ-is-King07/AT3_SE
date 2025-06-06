@@ -9,7 +9,7 @@ import 'swiper/css';
   
   export default function HomePage() {
     return (
-        <div className="flex flex-col items-center justify-center bg-gray-100">
+        <div className="flex flex-col items-center justify-center bg-gray-100"  style={{ fontFamily: "'Georgia', cursive" }}>
             <img src={HarbourBridge} className="w-400 h-190" />
             
             <div className="flex flex-row items-center justify-between bg-gray-50 p-4 rounded drop-shadow-lg mt-4 w-325">
