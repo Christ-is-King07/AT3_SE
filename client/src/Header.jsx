@@ -13,6 +13,7 @@ export default function Header() {
             <Link to="/home" className="hover:underline">Home</Link>
             <Link to="/about" className="hover:underline ml-5">About Me</Link>
             <Link to="/enquire" className="hover:underline ml-5">Enquire</Link>
+            <Link to="/login" className="hover:underline ml-5">Login</Link>
         </nav>
     </header>
     );

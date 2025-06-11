@@ -1,11 +1,14 @@
 const express = require('express');
+require('dotenv').config();
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const { PrismaClient } = require('@prisma/client');
 
 const app = express();
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3500;
 
+app.use(cookieParser());
 app.use(
     cors(
     {
@@ -15,9 +18,10 @@ app.use(
     })
 );
 
-app.use("/api/enquire", require("./routes/enquire"));
-
 app.use(express.json());
+
+app.use('/api/enquire', require('./routes/enquire'));
+app.use('/api/auth', require('./routes/auth'));
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
