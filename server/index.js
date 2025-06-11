@@ -22,6 +22,7 @@ app.use(express.json());
 
 app.use('/api/enquire', require('./routes/enquire'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/admin/enquiries', require('./routes/adminEnquiries'));
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

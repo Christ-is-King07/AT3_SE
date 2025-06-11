@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from './AuthContext.jsx';
 
 export default function Login() {
+  const { setUser } = useContext(AuthContext);   // ← grab setUser
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -13,22 +15,30 @@ export default function Login() {
     e.preventDefault();
     setError('');
 
-    try {
-      const res = await fetch('http://localhost:3500/api/auth/login', {
-        method: 'POST',
-        credentials: 'include', // send cookies
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Login failed');
-
-      // on success, redirect to home (or wherever)
-      navigate('/home');
-    } catch (err) {
-      setError(err.message);
+    // 1) log in and receive the cookie
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      credentials: 'include',            // ← very important
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setError(data.error || 'Login failed');
+      return;
     }
+
+    // 2) fetch current user immediately—and update context
+    const meRes = await fetch('/api/auth/me', {
+      credentials: 'include',            // ← send the cookie
+    });
+    if (meRes.ok) {
+      const meData = await meRes.json();
+      setUser(meData);                   // ← triggers Header re-render
+    }
+
+    // 3) navigate away
+    navigate('/home');
   };
 
   return (
@@ -64,8 +74,8 @@ export default function Login() {
         >
           Log In
         </button>
-        if you don't have an account, <a href="/register" className="text-blue-600 hover:underline">register here</a>.
-      </form>      
+          Don't have an account? <a href="/register" className="text-blue-600 hover:underline">Register</a>
+      </form>
     </div>
   );
 }

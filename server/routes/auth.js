@@ -46,7 +46,7 @@ router.post('/login', async (req, res) => {
     if (!valid) return res.status(401).json({ error: 'Invalid credentials' });
 
     const token = jwt.sign(
-      { userId: user.id, email: user.email },
+    { userId: user.id, email: user.email, isAdmin: user.isAdmin },
       JWT_SECRET,
       { expiresIn: '7d' }
     );
@@ -69,17 +69,32 @@ router.post('/login', async (req, res) => {
 });
 
 // (Optional) a protected route example
+// GET /api/auth/me
 router.get('/me', async (req, res) => {
-  const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).json({ error: 'Not authenticated' });
-
-  try {
-    const payload = jwt.verify(token, JWT_SECRET);
-    const user = await prisma.user.findUnique({ where: { id: payload.userId } });
-    res.json({ id: user.id, email: user.email, name: user.name });
-  } catch {
-    res.status(401).json({ error: 'Invalid token' });
-  }
-});
+    const token = req.cookies.token;
+    if (!token) return res.status(401).end();
+  
+    try {
+      const { userId } = jwt.verify(token, JWT_SECRET);
+      const user = await prisma.user.findUnique({
+        where: { id: userId },
+        select: { id: true, email: true, name: true, isAdmin: true },
+      });
+      res.json(user);
+    } catch {
+      res.status(401).end();
+    }
+  });
+  
+// POST /api/auth/logout
+router.post('/logout', (req, res) => {
+    // Clear the HTTP-only cookie
+    res
+      .clearCookie('token', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+      })
+      .json({ success: true });
+  });
 
 module.exports = router;
