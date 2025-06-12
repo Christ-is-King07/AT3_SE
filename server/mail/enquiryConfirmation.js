@@ -1,4 +1,4 @@
-module.exports =  (first_name, last_name, event_type, event_date, proposed_payment, additional_info) => `
+module.exports = (name, phone_number, how_you_heard, additional_info) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,13 +30,12 @@ module.exports =  (first_name, last_name, event_type, event_date, proposed_payme
     </head>
     <body>
     <div class="container">
-        <h1>Thank You for Your Enquiry, ${first_name} ${last_name}!</h1>
-        <p>We have received your message and will get back to you shortly.</p>
-        <p><strong>Event Type:</strong> ${event_type}</p>
-        <p><strong>Event Date:</strong> ${event_date}</p>
-        <p><strong>Proposed Payment:</strong> ${proposed_payment}</p>
-        <p><strong>Your Message:</strong></p>
+        <h1>Thank You for Your Enquiry ${name}!</h1>
+        <p><strong>Phone Number:</strong> ${phone_number}</p>
+        <p><strong>How You Heard About Us:</strong> ${how_you_heard}</p>
+        <p><strong>Additional Information:</strong></p>
         <p>${additional_info}</p>
+        <p>We’ve received your enquiry and will be in touch shortly.</p>
         <p>If you have any further questions, feel free to reply to this email.</p>
         <p>Best regards,<br>Vic Photography</p>
     </div>
