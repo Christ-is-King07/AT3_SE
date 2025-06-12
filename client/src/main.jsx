@@ -11,6 +11,8 @@ import About_me from './About_me.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
 import AdminDashboard from './AdminDashboard.jsx';
+import PackageSelection from './PackageSelection.jsx';
+import Booking from './NewBooking.jsx';
 
 
 const App = () => (
@@ -24,6 +26,8 @@ const App = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/packages" element={<PackageSelection />} />
+      <Route path="/booking" element={<Booking />} />
     </Routes>
     <Footer />
   </BrowserRouter>

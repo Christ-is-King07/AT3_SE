@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: 'http://localhost:5173',
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   })
 );
 app.use(express.json());
@@ -41,8 +41,9 @@ app.use('/api/auth', require('./routes/auth'));   // public auth routes
 
 // protect only the enquiry route:
 app.use('/api/enquire', authenticate, require('./routes/enquire'));
-
 app.use('/api/admin/enquiries', require('./routes/adminEnquiries'));
+app.use('/api/booking', authenticate, require('./routes/booking'));
+app.use('/api/admin/bookings', authenticate, require('./routes/adminBookings'));
 
 // global error handler
 app.use((err, req, res, next) => {
