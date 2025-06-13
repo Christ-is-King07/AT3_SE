@@ -68,6 +68,7 @@ router.post('/', async (req, res) => {
       to:   process.env.SENDGRID_ADMIN_EMAIL,
       from: { email: process.env.SENDGRID_FROM_EMAIL, name: 'Vic Photography' },
       subject: `New Booking from ${userName}`,
+      replyTo: userEmail, 
       html: adminHtml,
     });
 
