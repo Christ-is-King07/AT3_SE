@@ -18,6 +18,7 @@ model User {
   id        String   @id @default(uuid())
   name      String? 
   email     String?  @unique
+  phone_number     String
   password  String?
   isAdmin   Boolean  @default(false)
   enquiries Enquiry[]
@@ -29,7 +30,6 @@ model Enquiry {
   id        String   @id @default(uuid())
   userId         String
   user           User     @relation(fields: [userId], references: [id])
-  phone_number     String
   how_you_heard     String
   additional_info   String
   createdAt DateTime @default(now())

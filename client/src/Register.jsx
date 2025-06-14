@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', phone_number: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -51,6 +51,18 @@ export default function Register() {
             value={form.email}
             onChange={handleChange}
             className="w-full border px-3 py-2 rounded"
+            required
+          />
+        </div>
+        <div>
+          <label className="block mb-1">Phone Number</label>
+          <input
+            type="tel"
+            name="phone_number"
+            placeholder="Phone Number*"
+            className="w-full p-2 border rounded"
+            value={form.phone_number}
+            onChange={handleChange}
             required
           />
         </div>

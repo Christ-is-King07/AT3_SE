@@ -99,7 +99,7 @@ export default function AdminDashboard() {
                 <tr key={e.id} className="border-t">
                   <td className="p-2">{e.user?.name || '–'}</td>
                   <td className="p-2">{e.user?.email || '–'}</td>
-                  <td className="p-2">{e.phone_number}</td>
+                  <td className="p-2">{e.user?.phone_number || '–'}</td>
                   <td className="p-2">{e.how_you_heard}</td>
                   <td className="p-2">
                     {new Date(e.createdAt).toLocaleString()}
@@ -163,6 +163,7 @@ export default function AdminDashboard() {
               <tr className="bg-gray-100">
                 <th className="p-2">Name</th>
                 <th className="p-2">Email</th>
+                <th className="p-2">Phone Number</th>
                 <th className="p-2">Package</th>
                 <th className="p-2">Type</th>
                 <th className="p-2">Date</th>
@@ -176,6 +177,7 @@ export default function AdminDashboard() {
                 <tr key={b.id} className="border-t">
                   <td className="p-2">{b.user?.name || '–'}</td>
                   <td className="p-2">{b.user?.email || '–'}</td>
+                  <td className="p-2">{b.user?.phone_number || '–'}</td>
                   <td className="p-2">{b.package}</td>
                   <td className="p-2">{b.event_type}</td>
                   <td className="p-2">
@@ -236,7 +238,7 @@ export default function AdminDashboard() {
             });
             setBookings((prev) => prev.filter((x) => x.id !== b.id));
           }}
-          className="text-red-600 underline"
+          className="text-red-600"
         >
           Delete
         </button>

@@ -19,24 +19,25 @@ router.post('/', async (req, res) => {
   }
 
   // 2) Only these fields now
-  const { phone_number, how_you_heard, additional_info } = req.body;
-  if ([phone_number, how_you_heard, additional_info].some(f => !f)) {
-    return res.status(400).json({ error: 'phone_number, how_you_heard, additional_info are all required' });
+  const { how_you_heard, additional_info } = req.body;
+  if ([how_you_heard, additional_info].some(f => !f)) {
+    return res.status(400).json({ error: 'how_you_heard, additional_info are all required' });
   }
 
   try {
     // 3) Create the enquiry, linking it to that user
     const enquiry = await prisma.enquiry.create({
-      data: { userId, phone_number, how_you_heard, additional_info },
+      data: { userId, how_you_heard, additional_info },
     });
 
     // 4) Fetch the user’s name & email
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      select: { name: true, email: true },
+      select: { name: true, email: true, phone_number: true },
     });
     const userName  = user?.name  ?? 'Valued Customer';
     const userEmail = user?.email ?? '';
+    const userPhoneNumber = user?.phone_number ?? '';
 
     // 5) Send admin notification
     const adminMsg = {
@@ -47,7 +48,7 @@ router.post('/', async (req, res) => {
       },
       subject: `New Enquiry from ${userName}`,
       replyTo: userEmail,
-      html: adminEmailTemplate(userName, userEmail, phone_number, how_you_heard, additional_info),
+      html: adminEmailTemplate(userName, userEmail, userPhoneNumber, how_you_heard, additional_info),
     };
     await sgMail.send(adminMsg);
 
@@ -59,7 +60,7 @@ router.post('/', async (req, res) => {
         name: 'Vic Photography',
       },
       subject: 'Thanks for your enquiry!',
-      html: enquiryConfirmationTemplate(userName, userEmail, phone_number, how_you_heard, additional_info),
+      html: enquiryConfirmationTemplate(userName, userEmail, userPhoneNumber, how_you_heard, additional_info),
     };
     await sgMail.send(confirmationMsg);
 

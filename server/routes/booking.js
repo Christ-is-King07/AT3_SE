@@ -50,15 +50,17 @@ router.post('/', async (req, res) => {
     // 2) Load user info
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      select: { name: true, email: true },
+      select: { name: true, email: true, phone_number: true },
     });
     const userName  = user?.name  ?? 'Valued Customer';
     const userEmail = user?.email ?? '';
+    const userPhoneNumber = user?.phone_number ?? '';
 
     // 3) Send Admin notification
     const adminHtml = adminBookingEmail(
       userName,
       userEmail,
+      userPhoneNumber,
       pkg,
       event_type,
       event_date,

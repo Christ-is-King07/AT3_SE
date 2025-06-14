@@ -29,7 +29,7 @@ function authenticate(req, res, next) {
   }
   try {
     const payload = jwt.verify(token, JWT_SECRET);
-    req.user = { id: payload.userId, email: payload.email, isAdmin: payload.isAdmin };
+    req.user = { id: payload.userId, email: payload.email, isAdmin: payload.isAdmin, phone_number: payload.phone_number };
     next();
   } catch (err) {
     return res.status(401).json({ error: 'Invalid or expired token' });

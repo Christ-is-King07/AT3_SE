@@ -60,16 +60,6 @@ export default function Enquire() {
         <div className="md:w-1/2">
             <form className="space-y-4" onSubmit={handleSubmit}>
             <input
-                type="tel"
-                name="phone_number"
-                placeholder="Phone Number*"
-                className="w-full p-2 border rounded"
-                value={formData.phone_number}
-                onChange={handleChange}
-                required
-            />
-
-            <input
                 type="text"
                 name="how_you_heard"
                 placeholder="How did you hear about us?*"

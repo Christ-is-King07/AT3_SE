@@ -8,8 +8,8 @@ require('dotenv').config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
 router.post('/register', async (req, res) => {
-    const { name, email, password } = req.body;
-    if (!email || !password || !name) {
+    const { name, email, password, phone_number } = req.body;
+    if (!email || !password || !name ||!phone_number) {
       return res.status(400).json({ error: 'Name, email and password required' });
     }
   
@@ -18,9 +18,9 @@ router.post('/register', async (req, res) => {
       const hash = await bcrypt.hash(password, 10);
       // create the user
       const user = await prisma.user.create({
-        data: { name, email, password: hash },
+        data: { name, email, password: hash, phone_number },
       });
-      res.status(201).json({ success: true, user: { id: user.id, email: user.email } });
+      res.status(201).json({ success: true, user: { id: user.id, email: user.email, phone_number: user.phone_number } });
     } catch (err) {
       if (err.code === 'P2002') {
         // unique constraint failed
