@@ -126,8 +126,8 @@ export default function AdminDashboard() {
           {selected && (
             <div className="p-4 bg-gray-50 rounded shadow">
               <h2 className="text-xl mb-2">{selected.user?.name}’s Enquiry</h2>
-              <p><strong>Phone:</strong> {selected.phone_number}</p>
-              <p><strong>Heard About Us:</strong> {selected.how_you_heard}</p>
+              <p><strong>Phone:</strong> {selected.user?.phone_number}</p>
+              <p className="mt-2"><strong>Heard About Us:</strong> {selected.how_you_heard}</p>
               <p className="mt-2"><strong>Additional Info:</strong></p>
               <p>{selected.additional_info}</p>
               <hr className="my-4" />

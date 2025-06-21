@@ -12,7 +12,9 @@ router.use(requireAdmin);
 
 // 1) List all enquiries
 router.get('/', async (req, res) => {
-  const enquiries = await prisma.enquiry.findMany({ orderBy: { createdAt: 'desc' } });
+  const enquiries = await prisma.enquiry.findMany({
+    include: { user: { select: {name: true, email: true, phone_number: true,},},},
+  orderBy: { createdAt: 'desc' } });
   res.json(enquiries);
 });
 

@@ -39,15 +39,16 @@ export default function Enquire() {
     };
 
     return (
-    <div className="flex flex-col items-center justify-start bg-gray-100 min-h-screen pt-12">
-        <div className="flex flex-col md:flex-row max-w-6xl w-full px-8 gap-20">
+    <div className="flex flex-col items-center justify-start bg-gray-100 pt-12">
+        <div className="flex flex-col md:flex-row max-w-6xl w-full px-8 mb-25 mt-15 gap-20">
         {/* Left side */}
         <div className="md:w-1/2" style={{ fontFamily: "Georgia, serif" }}>
             <h1 className="text-3xl font-bold mb-4">Enquire</h1>
-            <p className="text-gray-700">
+            <p className="text-gray-700 mr-10">
             <b>Ready to make a booking or have a question?</b>
+            <br /> Have a question, a creative idea, or simply want to learn more before booking a session? I’m always happy to chat and hear about your vision. Whether you're planning a shoot, need more details about packages, or just want to see if we’re the right fit, feel free to reach out. Fill out the enquiry form below, and I’ll get back to you as soon as possible. Let’s start the conversation and bring your ideas to life!
             <br />
-            We’re excited to help… <br /><br />
+            <br />
             <b>Phone:</b> 0480 237 035<br />
             <b>Email:</b>{" "}
             <a href="mailto:vic-designer@hotmail.com">
@@ -80,7 +81,7 @@ export default function Enquire() {
 
             <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
             >
                 Send
             </button>

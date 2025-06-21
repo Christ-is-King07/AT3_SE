@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     return res.status(403).json({ error: 'Forbidden' });
   }
   const bookings = await prisma.booking.findMany({
-    include: { user: { select: { name: true, email: true } } },
+    include: { user: { select: { name: true, email: true, phone_number: true} } },
     orderBy: { createdAt: 'desc' },
   });
   res.json(bookings);

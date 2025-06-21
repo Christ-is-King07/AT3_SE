@@ -45,14 +45,14 @@ export default function NewBooking() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-8">
+    <div className="max-w mx-auto p-8 bg-gray-100 flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-4">
         Booking — {pkg.charAt(0).toUpperCase() + pkg.slice(1)}
       </h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 w-100 flex gap-4 flex-col items-center">
         <div>
-          <label className="block font-medium">Event Type</label>
+          <label className="block font-medium w-73">Event Type</label>
           <input
             name="event_type"
             type="text"
@@ -63,7 +63,7 @@ export default function NewBooking() {
           />
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-row items-center">
           <div>
             <label className="block font-medium">Date</label>
             <input
@@ -90,7 +90,7 @@ export default function NewBooking() {
 
         <button
           type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
         >
           Confirm Booking
         </button>

@@ -70,11 +70,11 @@ export default function Login() {
         </div>
         <button
           type="submit"
-          className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="w-full py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
         >
           Log In
         </button>
-          Don't have an account? <a href="/register" className="text-blue-600 hover:underline">Register</a>
+          Don't have an account? <a href="/register" className="text-gray-600 hover:underline">Register</a>
       </form>
     </div>
   );
