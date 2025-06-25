@@ -34,7 +34,7 @@ module.exports = (name, email, phone_number, how_you_heard, additional_info) => 
     <p>You have received a new enquiry from your website.</p>
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Phone Number:</strong> ${phone_number}</p>
-    <p><strong>How You Heard About Us:</strong> ${how_you_heard}</p>
+    <p><strong>Subject:</strong> ${how_you_heard}</p>
     <p><strong>Additional Information:</strong></p>
     <p>${additional_info}</p>
     <p>Please respond to the enquirer at their email address.</p>

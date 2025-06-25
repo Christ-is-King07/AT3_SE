@@ -32,7 +32,7 @@ module.exports = (name, phone_number, how_you_heard, additional_info) => `
     <div class="container">
         <h1>Thank You for Your Enquiry ${name}!</h1>
         <p><strong>Phone Number:</strong> ${phone_number}</p>
-        <p><strong>How You Heard About Us:</strong> ${how_you_heard}</p>
+        <p><strong>Subject:</strong> ${how_you_heard}</p>
         <p><strong>Additional Information:</strong></p>
         <p>${additional_info}</p>
         <p>We’ve received your enquiry and will be in touch shortly.</p>
