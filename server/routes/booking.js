@@ -33,6 +33,13 @@ router.post('/', async (req, res) => {
   // Parse date & time
   const parsedDate = new Date(event_date);
   const parsedTime = new Date(`${event_date}T${event_time}`);
+  
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // reset time to midnight
+  if (parsedDate < today) {
+    console.warn('Booking blocked: event_date is in the past', parsedDate);
+    return res.status(400).json({ error: 'Event date cannot be in the past' });
+  }
 
   try {
     // 1) Create the booking record

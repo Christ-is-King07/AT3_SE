@@ -35,8 +35,9 @@ export default function PackageSelection() {
 
   return (
     <div className="w-8xl mx-auto p-8 grid grid-cols-1 md:grid-cols-3 gap-10 bg-gray-100 ">
+      <h1 className="text-3xl font-bold mb-3 text-center col-span-full">Packages</h1>
       {PACKAGES.map((pkg) => (
-        <div key={pkg.id} className="border rounded-lg p-6 shadow hover:shadow-md bg-white mb-15 mt-15 h-70 drop-shadow-lg">
+        <div key={pkg.id} className="border rounded-lg p-6 shadow hover:shadow-md bg-white mb-15  h-70 drop-shadow-lg">
           <h2 className="text-xl font-bold mb-2">{pkg.title}</h2>
           <p className="mb-1"><strong>${pkg.rate}/h</strong></p>
           <p className="mb-2"><strong>Hours:&nbsp;</strong>{pkg.maxHours} {pkg.maxHours==='Unlimited' ? '' : 'hrs'}</p>
