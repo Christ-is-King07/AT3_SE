@@ -68,7 +68,7 @@ export default function Enquire() {
             <input
                 type="text"
                 name="how_you_heard"
-                placeholder="How did you hear about us?*"
+                placeholder="Subject*"
                 className="w-full p-2 border rounded"
                 value={formData.how_you_heard}
                 onChange={handleChange}
